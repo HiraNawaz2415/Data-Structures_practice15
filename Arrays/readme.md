@@ -19,6 +19,7 @@ For an int arr[5] = {10, 20, 30, 40, 50};
 Index:     0    1    2    3    4
 Value:    10   20   30   40   50
 Address: 1000 1004 1008 1012 1016  (if int = 4 bytes)
+
 ---
 ## Advantages
 - Fast access using index.
