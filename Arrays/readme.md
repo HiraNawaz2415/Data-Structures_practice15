@@ -108,9 +108,10 @@ Array must be sorted (✔ our array is sorted)
 
 **Initial values:**
 - low = 0, high = 4, key = 9
+  
 | Step | low | high | mid | arr\[mid] | Comparison | Result               |
 | ---- | --- | ---- | --- | --------- | ---------- | -------------------- |
-| 1    | 0   | 4    | 2   | 9         | 9 == 9 → ✅ | **Found at index 2** |
+| 1    | 0   | 4    | 2   | 9         | 9 == 9 →   | **Found at index 2** |
 
 - Try Searching for a Missing Element (e.g. 8)
 - Step 1: mid = 2, arr[2] = 9 → 9 > 8 → search left
