@@ -16,9 +16,9 @@ Each element in the array can be accessed using its index, starting from 0.
 ---
 ## Memory Layout
 For an int arr[5] = {10, 20, 30, 40, 50};
-Index:     0    1    2    3    4
-Value:    10   20   30   40   50
-Address: 1000 1004 1008 1012 1016  (if int = 4 bytes)
+- Index:     0    1    2    3    4
+- Value:    10   20   30   40   50
+- Address: 1000 1004 1008 1012 1016  (if int = 4 bytes)
 
 ---
 ## Advantages
