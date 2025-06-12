@@ -100,7 +100,7 @@ Steps:
 **Time Complexity:**
 - Best: O(n) (when already sorted)
 - Worst & Average: O(n²)
-**How it Works?
+### **How it Works?
 - Input: [5, 2, 9]
 **Pass 1:**
 - Compare 5 and 2 → swap → [2, 5, 9]
@@ -113,6 +113,7 @@ Steps:
 - No changes → Array is sorted
 
 Final Array: [2, 5, 9]
+
 ---
 ##2. Selection Sort
 **Description:**
@@ -123,7 +124,7 @@ Final Array: [2, 5, 9]
 **Time Complexity:**
  - All cases: O(n²) 
 
-**How it Works?**
+### **How it Works?**
 - Input: [5, 2, 9]
 
 **Pass 1 (i = 0):**
@@ -141,7 +142,7 @@ Final Array: [2, 5, 9]
 
 
 ---
-##3. Insertion Sort
+## 3. Insertion Sort
 **Description:**
 - Builds the sorted array one element at a time.
 
@@ -151,7 +152,7 @@ Final Array: [2, 5, 9]
 - Best: O(n)
 - Worst & Average: O(n²)
 
-**How it Works?
+### **How it Works?
 Input: [5, 2, 9]
 
 **Pass 1 (i = 1, key = 2):**
@@ -165,7 +166,7 @@ Input: [5, 2, 9]
 Final Array: [2, 5, 9]
 
 ---
-##4. Merge Sort
+## 4. Merge Sort
 **Description:**
 - Divide-and-conquer algorithm.
 
@@ -174,7 +175,7 @@ Final Array: [2, 5, 9]
 **Time Complexity:**
 - All cases: O(n log n)
 
-**How it works?
+### **How it works?
 Input: [5, 2, 9]
 
 **Split:**
@@ -204,7 +205,7 @@ Input: [5, 2, 9]
 Final Array: [2, 5, 9]
 
 ---
-##5. Quick Sort
+## 5. Quick Sort
 **Description:**
 - Divide-and-conquer, uses pivot to partition.
 - One of the fastest sorting algorithms in practice.
@@ -214,7 +215,7 @@ Final Array: [2, 5, 9]
 
 - Worst: O(n²) (rare if good pivot chosen)
 
-**How it Works?
+### **How it Works?
 Inut: [5, 2, 9]
 
 - **Pivot** = 9 (last element)
