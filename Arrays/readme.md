@@ -61,6 +61,17 @@ Linear Search (also known as Sequential Search) is a simple searching algorithm 
 
 - When the array size is small
 
+**Code Logic:**
+- Traverse each element one by one
+- Compare element with the key
+- If match found, return index
+
+| Step | Index | Value at arr\[i] | Comparison | Result               |
+| ---- | ----- | ---------------- | ---------- | -------------------- |
+| 1    | i = 0 | 2                | 2 == 9 → ❌ | Continue             |
+| 2    | i = 1 | 5                | 5 == 9 → ❌ | Continue             |
+| 3    | i = 2 | 9                | 9 == 9 → ✅ | **Found at index 2** |
+
 ---
 ## 2.What is Binary Search?
 - Definition:
@@ -100,7 +111,7 @@ Steps:
 **Time Complexity:**
 - Best: O(n) (when already sorted)
 - Worst & Average: O(n²)
-### **How it Works?
+### How it Works?
 - Input: [5, 2, 9]
 **Pass 1:**
 - Compare 5 and 2 → swap → [2, 5, 9]
@@ -115,7 +126,7 @@ Steps:
 Final Array: [2, 5, 9]
 
 ---
-##2. Selection Sort
+## 2. Selection Sort
 **Description:**
 - Finds the minimum element and places it at the beginning.
 
@@ -124,7 +135,7 @@ Final Array: [2, 5, 9]
 **Time Complexity:**
  - All cases: O(n²) 
 
-### **How it Works?**
+### How it Works?
 - Input: [5, 2, 9]
 
 **Pass 1 (i = 0):**
@@ -152,7 +163,7 @@ Final Array: [2, 5, 9]
 - Best: O(n)
 - Worst & Average: O(n²)
 
-### **How it Works?
+### How it Works?
 Input: [5, 2, 9]
 
 **Pass 1 (i = 1, key = 2):**
@@ -175,7 +186,7 @@ Final Array: [2, 5, 9]
 **Time Complexity:**
 - All cases: O(n log n)
 
-### **How it works?
+### How it works?
 Input: [5, 2, 9]
 
 **Split:**
@@ -215,7 +226,7 @@ Final Array: [2, 5, 9]
 
 - Worst: O(n²) (rare if good pivot chosen)
 
-### **How it Works?
+### How it Works?
 Inut: [5, 2, 9]
 
 - **Pivot** = 9 (last element)
