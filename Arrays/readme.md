@@ -92,3 +92,153 @@ Steps:
 5.Quick Sort
 
 ---
+## 1. Bubble Sort
+**Description:**
+- Repeatedly compares adjacent elements and swaps them if they are in the wrong order.
+- Simple but not efficient for large datasets.
+
+**Time Complexity:**
+- Best: O(n) (when already sorted)
+- Worst & Average: O(n²)
+**How it Works?
+- Input: [5, 2, 9]
+**Pass 1:**
+- Compare 5 and 2 → swap → [2, 5, 9]
+- Compare 5 and 9 → no swap
+- Array after Pass 1: [2, 5, 9]
+
+**Pass 2:**
+- Compare 2 and 5 → no swap
+
+- No changes → Array is sorted
+
+Final Array: [2, 5, 9]
+---
+##2. Selection Sort
+**Description:**
+- Finds the minimum element and places it at the beginning.
+
+- Inefficient but easy to understand.
+
+**Time Complexity:**
+ - All cases: O(n²) 
+
+**How it Works?**
+- Input: [5, 2, 9]
+
+**Pass 1 (i = 0):**
+- Find min from index 0 to 2 → min = 2 (at index 1)
+
+- Swap 5 and 2 → [2, 5, 9]
+
+**Pass 2 (i = 1):**
+- Find min from index 1 to 2 → min = 5 (already in place)
+
+- Pass 3 (i = 2):
+- Only one element left
+
+Final Array: [2, 5, 9]
+
+
+---
+##3. Insertion Sort
+**Description:**
+- Builds the sorted array one element at a time.
+
+- Efficient for small or nearly sorted datasets.
+
+**Time Complexity:**
+- Best: O(n)
+- Worst & Average: O(n²)
+
+**How it Works?
+Input: [5, 2, 9]
+
+**Pass 1 (i = 1, key = 2):**
+- Compare 2 with 5 → 2 < 5 → shift 5 → [5, 5, 9]
+
+- Insert 2 at index 0 → [2, 5, 9]
+
+**Pass 2 (i = 2, key = 9):**
+- Compare 9 with 5 → no shift → insert in place
+
+Final Array: [2, 5, 9]
+
+---
+##4. Merge Sort
+**Description:**
+- Divide-and-conquer algorithm.
+
+- Divides the array into halves, sorts them, and then merges.
+
+**Time Complexity:**
+- All cases: O(n log n)
+
+**How it works?
+Input: [5, 2, 9]
+
+**Split:**
+
+- Left: [5]
+
+- Right: [2, 9]
+
+**Right split:**
+
+- Left: [2]
+
+- Right: [9]
+
+**Merge [2] and [9] → [2, 9]**
+
+**Now merge [5] and [2, 9]**
+
+**Compare 5 and 2 → take 2**
+
+**Compare 5 and 9 → take 5**
+
+- Take remaining 9
+
+→ [2, 5, 9]
+
+Final Array: [2, 5, 9]
+
+---
+##5. Quick Sort
+**Description:**
+- Divide-and-conquer, uses pivot to partition.
+- One of the fastest sorting algorithms in practice.
+
+**Time Complexity:**
+- Best & Average: O(n log n)
+
+- Worst: O(n²) (rare if good pivot chosen)
+
+**How it Works?
+Inut: [5, 2, 9]
+
+- **Pivot** = 9 (last element)
+
+**Partition:**
+
+- Compare 5 < 9 → i = 0
+
+- Compare 2 < 9 → i = 1
+
+- Swap pivot with i+1 (already in place)
+
+- Pivot = 9 is at correct place.
+
+- Now sort left: [5, 2]
+
+- **Pivot** = 2
+
+- 5 > 2 → no changes
+
+- Swap pivot with i+1 → [2, 5]
+
+Final Array: [2, 5, 9]
+
+
+
+---
