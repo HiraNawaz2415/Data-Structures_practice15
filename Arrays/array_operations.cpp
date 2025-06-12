@@ -1,24 +1,27 @@
-//2415.....
+// 2415..
 #include <iostream>
 using namespace std;
 
 class Array {
 private:
-    int* arr;      // Pointer for dynamic array
-    int size;      // Current number of elements
-    int capacity;  // Maximum capacity (user-defined)
+    int* arr;
+    int size;
+    int capacity;
 
 public:
+    // Constructor to initialize array with given capacity
     Array(int cap) {
         capacity = cap;
-        arr = new int[capacity];
         size = 0;
+        arr = new int[capacity];
     }
 
+    // Destructor
     ~Array() {
         delete[] arr;
     }
 
+    // ================== INSERTION ==================
     void insertAtEnd(int value) {
         if (size >= capacity) {
             cout << "Array is full!\n";
@@ -40,12 +43,8 @@ public:
     }
 
     void insertAtPosition(int value, int pos) {
-        if (size >= capacity) {
-            cout << "Array is full!\n";
-            return;
-        }
-        if (pos < 0 || pos > size) {
-            cout << "Invalid position!\n";
+        if (pos < 0 || pos > size || size >= capacity) {
+            cout << "Invalid position or array full.\n";
             return;
         }
         for (int i = size; i > pos; i--) {
@@ -55,9 +54,10 @@ public:
         size++;
     }
 
+    // ================== DELETION ==================
     void deleteFromBeginning() {
         if (size == 0) {
-            cout << "Array is empty!\n";
+            cout << "Array is empty.\n";
             return;
         }
         for (int i = 0; i < size - 1; i++) {
@@ -68,7 +68,7 @@ public:
 
     void deleteFromEnd() {
         if (size == 0) {
-            cout << "Array is empty!\n";
+            cout << "Array is empty.\n";
             return;
         }
         size--;
@@ -76,7 +76,7 @@ public:
 
     void deleteFromPosition(int pos) {
         if (pos < 0 || pos >= size) {
-            cout << "Invalid position!\n";
+            cout << "Invalid position.\n";
             return;
         }
         for (int i = pos; i < size - 1; i++) {
@@ -85,9 +85,10 @@ public:
         size--;
     }
 
-    void search(int key) {
+    // ================== SEARCHING ==================
+    void search(int value) {
         for (int i = 0; i < size; i++) {
-            if (arr[i] == key) {
+            if (arr[i] == value) {
                 cout << "Element found at index " << i << endl;
                 return;
             }
@@ -95,14 +96,22 @@ public:
         cout << "Element not found.\n";
     }
 
-    void update(int pos, int newValue) {
-        if (pos < 0 || pos >= size) {
-            cout << "Invalid position!\n";
-            return;
+    // ================== SORTING ==================
+    void sortArray() {
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // swap
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
         }
-        arr[pos] = newValue;
+        cout << "Array sorted successfully.\n";
     }
 
+    // ================== DISPLAY ==================
     void display() {
         if (size == 0) {
             cout << "Array is empty.\n";
@@ -116,16 +125,17 @@ public:
     }
 };
 
+// ================== MAIN FUNCTION ==================
 int main() {
     int capacity;
-    cout << "Enter the size (capacity) of the array: ";
+    cout << "Enter array capacity: ";
     cin >> capacity;
 
-    Array a(capacity);
-    int choice, value, position;
+    Array arr(capacity);
+    int choice, value, pos;
 
     do {
-        cout << "\nArray Operations Menu:\n";
+        cout << "\n----- Array Operation Menu -----\n";
         cout << "1. Insert at End\n";
         cout << "2. Insert at Beginning\n";
         cout << "3. Insert at Position\n";
@@ -133,57 +143,55 @@ int main() {
         cout << "5. Delete from Beginning\n";
         cout << "6. Delete from Position\n";
         cout << "7. Search\n";
-        cout << "8. Update\n";
+        cout << "8. Sort Array\n";
         cout << "9. Display\n";
         cout << "10. Exit\n";
-        cout << "Enter your choice: ";
+        cout << "Enter choice: ";
         cin >> choice;
 
         switch (choice) {
         case 1:
-            cout << "Enter value to insert at end: ";
+            cout << "Enter value: ";
             cin >> value;
-            a.insertAtEnd(value);
+            arr.insertAtEnd(value);
             break;
         case 2:
-            cout << "Enter value to insert at beginning: ";
+            cout << "Enter value: ";
             cin >> value;
-            a.insertAtBeginning(value);
+            arr.insertAtBeginning(value);
             break;
         case 3:
-            cout << "Enter value and position to insert: ";
-            cin >> value >> position;
-            a.insertAtPosition(value, position);
+            cout << "Enter value and position: ";
+            cin >> value >> pos;
+            arr.insertAtPosition(value, pos);
             break;
         case 4:
-            a.deleteFromEnd();
+            arr.deleteFromEnd();
             break;
         case 5:
-            a.deleteFromBeginning();
+            arr.deleteFromBeginning();
             break;
         case 6:
-            cout << "Enter position to delete from: ";
-            cin >> position;
-            a.deleteFromPosition(position);
+            cout << "Enter position to delete: ";
+            cin >> pos;
+            arr.deleteFromPosition(pos);
             break;
         case 7:
-            cout << "Enter element to search: ";
+            cout << "Enter value to search: ";
             cin >> value;
-            a.search(value);
+            arr.search(value);
             break;
         case 8:
-            cout << "Enter position and new value: ";
-            cin >> position >> value;
-            a.update(position, value);
+            arr.sortArray();
             break;
         case 9:
-            a.display();
+            arr.display();
             break;
         case 10:
-            cout << "Exiting...\n";
+            cout << "Exiting program...\n";
             break;
         default:
-            cout << "Invalid choice!\n";
+            cout << "Invalid choice.\n";
         }
 
     } while (choice != 10);
