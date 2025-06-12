@@ -281,3 +281,73 @@ Final Array: [2, 5, 9]
 
 
 ---
+## **In-Place vs Out-of-Place Algorithms**
+### In-Place Algorithm
+An algorithm is called in-place if it requires only a constant (or very small) amount of extra memory to perform its task — that is, it doesn't require extra space proportional to the input size.
+
+**Characteristics:**
+- Uses input array itself for sorting
+
+- Requires O(1) or constant space
+
+- Modifies the original data
+
+**Examples:**
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Quick Sort
+
+---
+
+### Out-of-Place Algorithm
+An algorithm is out-of-place if it requires extra space to complete the operation. This is usually done by creating a new data structure or auxiliary array to hold temporary results.
+
+**Characteristics:**
+- Requires O(n) or more extra space
+- Does not modify the original array directly
+
+**Examples:**
+- Merge Sort (uses temporary arrays during merging)
+
+- Some versions of Counting Sort
+- Radix Sort
+
+---
+## **Stable vs Unstable Sorting Algorithms**
+### Stable Sorting Algorithm
+- A sorting algorithm is stable if it preserves the relative order of records with equal keys (values).
+
+**Example:**
+- If you sort [4a, 3, 4b, 1], and after sorting you get [1, 3, 4a, 4b], it is stable because 4a comes before 4b just like in original.
+
+**Stable Sorting Algorithms:**
+- Bubble Sort
+- Insertion Sort
+- Merge Sort
+- Counting Sort
+- Radix Sort
+
+### Unstable Sorting Algorithm
+- A sorting algorithm is unstable if the relative order of equal elements may change during sorting.
+
+**Example:**
+- After sorting [4a, 3, 4b, 1] → [1, 3, 4b, 4a] → 4a and 4b order changed → unstable.
+
+**Unstable Algorithms:**
+- Selection Sort
+- Quick Sort
+- Heap Sort
+
+---
+## Summary Table
+
+| Concept        | In-Place | Out-of-Place | Stable | Unstable |
+| -------------- | -------- | ------------ | ------ | -------- |
+| Bubble Sort    | ✔️       | ❌          | ✔️     | ❌      |
+| Selection Sort | ✔️       | ❌          | ❌     | ✔️      |
+| Insertion Sort | ✔️       | ❌          | ✔️     | ❌      |
+| Merge Sort     | ❌       | ✔️          | ✔️     | ❌      |
+| Quick Sort     | ✔️       | ❌          | ❌     | ✔️      |
+
+---
