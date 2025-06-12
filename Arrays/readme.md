@@ -46,7 +46,7 @@ For an int arr[5] = {10, 20, 30, 40, 50};
 
 ---
 ## Searching Types
-**1.What is Linear Search?**
+## **1.What is Linear Search?**
 - Definition:
 Linear Search (also known as Sequential Search) is a simple searching algorithm that checks every element in the array until it finds the target value or reaches the end of the array.
 
