@@ -66,6 +66,10 @@ Linear Search (also known as Sequential Search) is a simple searching algorithm 
 - Compare element with the key
 - If match found, return index
 
+- **input**arr = [2, 5, 9, 12, 17]
+
+- Let’s search for: 9
+
 | Step | Index | Value at arr\[i] | Comparison | Result               |
 | ---- | ----- | ---------------- | ---------- | -------------------- |
 | 1    | i = 0 | 2                | 2 == 9 → ❌ | Continue             |
@@ -91,6 +95,28 @@ Steps:
 **When to Use:**
 
 - Only when the array is sorted
+
+**Code Logic:**
+Array must be sorted (✔ our array is sorted)
+- Start with low = 0, high = n - 1
+
+- Find mid = (low + high) / 2
+
+- Compare arr[mid] with key
+
+- Repeat on left or right sub-array
+
+**Initial values:**
+- low = 0, high = 4, key = 9
+| Step | low | high | mid | arr\[mid] | Comparison | Result               |
+| ---- | --- | ---- | --- | --------- | ---------- | -------------------- |
+| 1    | 0   | 4    | 2   | 9         | 9 == 9 → ✅ | **Found at index 2** |
+
+- Try Searching for a Missing Element (e.g. 8)
+- Step 1: mid = 2, arr[2] = 9 → 9 > 8 → search left
+- Step 2: low = 0, high = 1 → mid = 0 → arr[0] = 2
+- Step 3: low = 1, high = 1 → mid = 1 → arr[1] = 5 → still < 8
+- low > high → Not found
 
 ---
 
