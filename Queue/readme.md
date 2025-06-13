@@ -28,7 +28,7 @@ It always points to the last element in the queue.
 - Index:     0    1    2
 - Queue:   [10, 20, 30]
           ↑         ↑
-       front       rear
+ -       front       rear
 
 ---
 ## Queue Terminology
