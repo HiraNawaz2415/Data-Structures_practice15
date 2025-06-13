@@ -1,4 +1,3 @@
-# **Stack**
 ## What is a Stack?
 A Stack is a linear data structure that follows the LIFO (Last In, First Out) principle.
 This means the last element added to the stack is the first one to be removed.
@@ -60,3 +59,53 @@ Element will always be remove from the top.
 - From the stack: [5, 10, 20]
 - top() → returns 20
 - Stack remains: [5, 10, 20]
+
+---
+## Stack Example:
+For example do these operations:
+- push(10)
+- push(20)
+- push(30)
+The stack looks like this:
+|     30     |   ← top (last pushed, first out)
+|     20     |
+|     10     |
+-------------
+Now if  call:
+- pop()
+- It removes the top element, which is 30:
+
+|     20     |   ← top
+|     10     |
+-------------
+
+---
+## Push Operation (Adding):
+Before push(40):
+|     30     |
+|     20     |
+|     10     |
+-------------
+
+After push(40):
+|     40     |  ← top
+|     30     |
+|     20     |
+|     10     |
+-------------
+
+---
+## Pop Operation (Removing):
+Before pop():
+|     40     |  ← top
+|     30     |
+|     20     |
+|     10     |
+-------------
+
+After pop():
+|     30     |  ← top
+|     20     |
+|     10     |
+-------------
+
