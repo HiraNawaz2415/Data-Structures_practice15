@@ -6,6 +6,30 @@ A queue is a linear data structure that follows the FIFO (First In, First Out) p
 - Print jobs sent to a printer.
 - Task scheduling in operating systems.
 
+## What is front?
+- The front is the position from where elements are removed (dequeued).
+- It always points to the first element in the queue.
+
+**Example:**
+- Queue: [10, 20, 30]
+- Here, front = 10
+
+## What is rear?
+The rear is the position where elements are added (enqueued).
+
+It always points to the last element in the queue.
+
+**Example:**
+- Queue: [10, 20, 30]
+- Here, rear = 30
+
+---
+## Visual Representation
+- Index:     0    1    2
+- Queue:   [10, 20, 30]
+          ↑         ↑
+       front       rear
+
 ---
 ## Queue Terminology
 
