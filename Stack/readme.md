@@ -66,14 +66,17 @@ For example do these operations:
 - push(10)
 - push(20)
 - push(30)
+  
 The stack looks like this:
 |     30     |   ← top (last pushed, first out)
 |     20     |
 |     10     |
 -------------
+
 Now if  call:
 - pop()
 - It removes the top element, which is 30:
+  
 
 |     20     |   ← top
 |     10     |
@@ -81,6 +84,7 @@ Now if  call:
 
 ---
 ## Push Operation (Adding):
+
 Before push(40):
 |     30     |
 |     20     |
@@ -96,6 +100,7 @@ After push(40):
 
 ---
 ## Pop Operation (Removing):
+
 Before pop():
 |     40     |  ← top
 |     30     |
