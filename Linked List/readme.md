@@ -54,3 +54,46 @@ struct Node {
 - head                          tail
 
 ---
+##  Doubly Linked List
+Each node has:
+
+- **data**
+- **prev:** pointer to the previous node
+- **next:** pointer to the next node
+
+🔗 **Structure:**
+ - NULL ← [10 | * | * ] ↔ [20 | * | * ] ↔ [30 | * | NULL]
+
+## Pros:
+- Can traverse both directions
+
+- Easier to delete or insert from both ends
+
+## Cons:
+- Uses more memory (extra pointer)
+
+---
+## Circular Linked List
+ - The last node points back to the head, forming a circle.
+
+🔗 **Structure (Singly Circular):**
+
+ - [10 | * ] → [20 | * ] → [30 | * ]
+ -    ↑_________________________↑
+
+🔗 **Structure (Doubly Circular):**
+
+- ↔ [10] ↔ [20] ↔ [30] ↔ (points back to 10)
+
+## Pros:
+- Can cycle through the list endlessly
+
+- Good for round-robin algorithms (like task scheduling)
+
+## Cons:
+- Harder to debug or detect infinite loops
+
+---
+
+
+
