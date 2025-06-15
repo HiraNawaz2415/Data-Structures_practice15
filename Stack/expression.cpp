@@ -1,12 +1,12 @@
-//2415..
 #include <iostream>
 #include <stack>
-#include <cctype>
 #include <string>
+#include <sstream>
 #include <cmath>
+#include <cctype>
+#include <vector>
 using namespace std;
 
-// Function to get precedence of operator
 int precedence(char op) {
     if(op == '^') return 3;
     if(op == '*' || op == '/') return 2;
@@ -14,98 +14,157 @@ int precedence(char op) {
     return 0;
 }
 
-// Check if operator
 bool isOperator(char c) {
     return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
 }
 
-// Convert infix to postfix
-string infixToPostfix(string infix) {
-    stack<char> st;
-    string postfix;
+bool isHigher(char op1, char op2) {
+    return precedence(op1) >= precedence(op2);
+}
 
-    for(char ch : infix) {
-        if(isalnum(ch)) {
-            postfix += ch;
-        } else if(ch == '(') {
-            st.push(ch);
-        } else if(ch == ')') {
-            while(!st.empty() && st.top() != '(') {
-                postfix += st.top();
-                st.pop();
+vector<string> tokenize(string expr) {
+    vector<string> tokens;
+    string num;
+    for (char ch : expr) {
+        if (isdigit(ch) || ch == '.') {
+            num += ch;
+        } else {
+            if (!num.empty()) {
+                tokens.push_back(num);
+                num.clear();
             }
-            if(!st.empty()) st.pop(); // remove '('
-        } else if(isOperator(ch)) {
-            while(!st.empty() && precedence(st.top()) >= precedence(ch)) {
-                postfix += st.top();
-                st.pop();
+            if (!isspace(ch)) {
+                tokens.push_back(string(1, ch));
             }
-            st.push(ch);
         }
     }
+    if (!num.empty()) tokens.push_back(num);
+    return tokens;
+}
 
-    while(!st.empty()) {
-        postfix += st.top();
+string infixToPostfix(string infix) {
+    vector<string> tokens = tokenize(infix);
+    stack<string> st;
+    string postfix;
+    for (string token : tokens) {
+        if (isdigit(token[0]) || token[0] == '.') {
+            postfix += token + " ";
+        } else if (token == "(") {
+            st.push(token);
+        } else if (token == ")") {
+            while (!st.empty() && st.top() != "(") {
+                postfix += st.top() + " ";
+                st.pop();
+            }
+            if (!st.empty()) st.pop();
+        } else if (isOperator(token[0])) {
+            while (!st.empty() && isOperator(st.top()[0]) && isHigher(st.top()[0], token[0])) {
+                postfix += st.top() + " ";
+                st.pop();
+            }
+            st.push(token);
+        }
+    }
+    while (!st.empty()) {
+        postfix += st.top() + " ";
         st.pop();
     }
-
     return postfix;
 }
 
-// Evaluate postfix expression (only single-digit values)
-int evaluatePostfix(string postfix) {
-    stack<int> st;
-    for(char ch : postfix) {
-        if(isdigit(ch)) {
-            st.push(ch - '0');
+float evaluatePostfix(string postfix) {
+    vector<string> tokens = tokenize(postfix);
+    stack<float> st;
+    for (string token : tokens) {
+        if (isdigit(token[0]) || token[0] == '.') {
+            st.push(stof(token));
         } else {
-            int b = st.top(); st.pop();
-            int a = st.top(); st.pop();
-            switch(ch) {
-                case '+': st.push(a + b); break;
-                case '-': st.push(a - b); break;
-                case '*': st.push(a * b); break;
-                case '/': st.push(a / b); break;
-                case '^': st.push(pow(a, b)); break;
-            }
+            float b = st.top(); st.pop();
+            float a = st.top(); st.pop();
+            if (token == "+") st.push(a + b);
+            else if (token == "-") st.push(a - b);
+            else if (token == "*") st.push(a * b);
+            else if (token == "/") st.push(a / b);
+            else if (token == "^") st.push(pow(a, b));
         }
     }
     return st.top();
 }
 
-// Main program
+string infixToPrefix(string infix) {
+    reverse(infix.begin(), infix.end());
+    for (auto &ch : infix) {
+        if (ch == '(') ch = ')';
+        else if (ch == ')') ch = '(';
+    }
+    string revPostfix = infixToPostfix(infix);
+    vector<string> revTokens = tokenize(revPostfix);
+    reverse(revTokens.begin(), revTokens.end());
+    string prefix;
+    for (string s : revTokens) prefix += s + " ";
+    return prefix;
+}
+
+bool validateExpression(string expr) {
+    int balance = 0;
+    for (char ch : expr) {
+        if (ch == '(') balance++;
+        else if (ch == ')') balance--;
+        if (balance < 0) return false;
+    }
+    return balance == 0;
+}
+
 int main() {
     int choice;
     string expression;
 
-    cout << "=== Expression Tool ===\n";
-    cout << "1. Convert Infix to Postfix\n";
-    cout << "2. Evaluate Postfix Expression\n";
-    cout << "3. Both Infix to Postfix & Evaluate\n";
-    cout << "Enter your choice (1-3): ";
-    cin >> choice;
+    do {
+        cout << "\n=== Expression Menu ===" << endl;
+        cout << "1. Convert Infix to Postfix" << endl;
+        cout << "2. Evaluate Postfix Expression" << endl;
+        cout << "3. Convert Infix to Prefix" << endl;
+        cout << "4. Convert & Evaluate Infix Expression" << endl;
+        cout << "5. Exit" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
+        cin.ignore();
 
-    cin.ignore();  // clear input buffer
-    cout << "\nEnter Expression: ";
-    getline(cin, expression);
+        if (choice >= 1 && choice <= 4) {
+            cout << "\nEnter expression: ";
+            getline(cin, expression);
 
-    if(choice == 1) {
-        string postfix = infixToPostfix(expression);
-        cout << "Postfix: " << postfix << endl;
-    }
-    else if(choice == 2) {
-        int result = evaluatePostfix(expression);
-        cout << "Result: " << result << endl;
-    }
-    else if(choice == 3) {
-        string postfix = infixToPostfix(expression);
-        int result = evaluatePostfix(postfix);
-        cout << "Postfix: " << postfix << endl;
-        cout << "Result: " << result << endl;
-    }
-    else {
-        cout << "Invalid choice!" << endl;
-    }
+            if (!validateExpression(expression)) {
+                cout << "❌ Invalid expression (unbalanced parentheses).\n";
+                continue;
+            }
+        }
+
+        switch (choice) {
+            case 1:
+                cout << "✅ Postfix: " << infixToPostfix(expression) << endl;
+                break;
+            case 2:
+                cout << "✅ Result: " << evaluatePostfix(expression) << endl;
+                break;
+            case 3:
+                cout << "✅ Prefix: " << infixToPrefix(expression) << endl;
+                break;
+            case 4:
+                {
+                    string postfix = infixToPostfix(expression);
+                    float result = evaluatePostfix(postfix);
+                    cout << "✅ Postfix: " << postfix << endl;
+                    cout << "✅ Result: " << result << endl;
+                }
+                break;
+            case 5:
+                cout << "👋 Exiting...\n";
+                break;
+            default:
+                cout << "❗ Invalid choice. Try again.\n";
+        }
+    } while (choice != 5);
 
     return 0;
 }
