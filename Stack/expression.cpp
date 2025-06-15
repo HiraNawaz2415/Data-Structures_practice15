@@ -142,27 +142,27 @@ int main() {
 
         switch (choice) {
             case 1:
-                cout << "✅ Postfix: " << infixToPostfix(expression) << endl;
+                cout << "Postfix: " << infixToPostfix(expression) << endl;
                 break;
             case 2:
-                cout << "✅ Result: " << evaluatePostfix(expression) << endl;
+                cout << "Result: " << evaluatePostfix(expression) << endl;
                 break;
             case 3:
-                cout << "✅ Prefix: " << infixToPrefix(expression) << endl;
+                cout << "Prefix: " << infixToPrefix(expression) << endl;
                 break;
             case 4:
                 {
                     string postfix = infixToPostfix(expression);
                     float result = evaluatePostfix(postfix);
-                    cout << "✅ Postfix: " << postfix << endl;
-                    cout << "✅ Result: " << result << endl;
+                    cout << "Postfix: " << postfix << endl;
+                    cout << "Result: " << result << endl;
                 }
                 break;
             case 5:
-                cout << "👋 Exiting...\n";
+                cout << "Exiting...\n";
                 break;
             default:
-                cout << "❗ Invalid choice. Try again.\n";
+                cout << "!Invalid choice. Try again.\n";
         }
     } while (choice != 5);
 
