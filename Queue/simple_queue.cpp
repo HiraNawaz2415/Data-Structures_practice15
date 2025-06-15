@@ -20,24 +20,34 @@ public:
     }
 
     void enqueue(int value) {
-        if (isFull()) {
+        if (rear==size-1) {
             cout << "Queue Overflow! Cannot insert " << value << endl;
             return;
         }
-        rear = (rear + 1) % capacity;
+        else
+        {
         arr[rear] = value;
         size++;
         cout << value << " enqueued to queue.\n";
+        }
     }
 
     void dequeue() {
-        if (isEmpty()) {
+        if ((front==-1)&&(rear==-1)) {
             cout << "Queue Underflow! No element to remove.\n";
             return;
         }
+        else if(front==rear)
+        {
+            front=rear-1;
+            size--;
+        }
+        else
+        {
         cout << arr[front] << " dequeued from queue.\n";
-        front = (front + 1) % capacity;
+        front++;
         size--;
+        }
     }
 
     void peek() {
