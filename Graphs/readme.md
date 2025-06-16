@@ -105,6 +105,62 @@
 | Tarjan’s/Kosaraju | Strongly Connected Components  | O(V + E)        |
 
 ---
+## Bipartite Graph
+A graph is bipartite if:
+
+- You can divide all the nodes into two groups such that
+- No two nodes in the same group are connected directly by an edge.
+Think of it like two teams where:
+- Edges are only allowed between players of different teams.
+- You can use 2 colors to color the nodes, making sure no two connected nodes have the same color.
+
+**Example use:** Matching problems (jobs vs workers, students vs projects).
+
+---
+## Topological Sort
+Topological sorting is:
+
+- A linear order of nodes in a Directed Acyclic Graph (DAG).
+
+- For every directed edge u → v, node u comes before v in the order.
+
+- It’s used when tasks depend on other tasks.
+
+- **Example:** Course prerequisite order, build systems.
+
+---
+## DAG (Directed Acyclic Graph)
+A DAG is:
+
+ - A graph where edges have direction, and
+ - There are no cycles (you can't return to the same node following edge directions).
+
+- **Example:** Task scheduling, dependency graphs, compiler optimization.
+
+---
+## Spanning Tree
+A spanning tree of a graph is:
+
+ - A subgraph that includes all the nodes,
+ - Is connected (every node is reachable), andHas no cycles.
+ - If a graph has n nodes, the spanning tree will have exactly n-1 edges.
+ - Used to create a minimal connection between components.
+
+---
+## Minimum Spanning Tree (MST)
+A minimum spanning tree is:
+
+ - A spanning tree where the sum of all edge weights is the smallest possible.
+
+**Algorithms:**
+
+1. **Kruskal's Algorithm:** Sort edges, add smallest ones that don’t form a cycle.
+2. **Prim's Algorithm:** Start from one node and expand by adding smallest edges.
+
+**Example:** Building the cheapest network of roads, cables, or pipes.
+
+
+---
 ## Sample Questions for Practice
 - Detect cycle in a graph.
 - Find shortest path from a source to all vertices.
