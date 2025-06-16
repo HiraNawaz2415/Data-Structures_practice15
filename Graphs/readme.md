@@ -105,3 +105,10 @@
 | Tarjan’s/Kosaraju | Strongly Connected Components  | O(V + E)        |
 
 ---
+## Sample Questions for Practice
+- Detect cycle in a graph.
+- Find shortest path from a source to all vertices.
+- Number of connected components.
+- Check if a graph is bipartite.
+- Topological sort of a DAG.
+- Minimum spanning tree of a graph.
