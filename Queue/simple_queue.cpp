@@ -39,7 +39,7 @@ public:
         }
         else if(front==rear)
         {
-            front=rear-1;
+            front=rear=-1;
             size--;
         }
         else
